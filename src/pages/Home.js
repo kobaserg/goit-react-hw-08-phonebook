@@ -1,4 +1,4 @@
-import { Container, Title, Image, HomeSection } from './Home.styled';
+import { Container, Title, HomeSection } from './Home.styled';
 
 export function Home() {
   return (

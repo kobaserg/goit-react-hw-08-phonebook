@@ -30,6 +30,6 @@ export const Title = styled.h1`
   text-align: center;
 `;
 
-export const Image = styled.img`
-  width: 100%;
-`;
+// export const Image = styled.img`
+//   width: 100%;
+// `;
