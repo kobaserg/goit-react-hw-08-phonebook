@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { fetchContacts } from '../../redux/phonebookOperation';
+import { fetchContacts } from '../../redux/phonebook/phonebookOperation';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   getStoreContacts,
   getStoreFilter,
   getLoading,
-} from 'redux/phonebookSlice';
+} from '../../redux/phonebook/phonebookSlice';
 import { Loader } from 'components/Loader/Loader';
 import {
   ListContact,
@@ -15,7 +15,7 @@ import {
   NameCont,
   BtnDelete,
 } from './ContactsList.styled';
-import { deleteContact } from '../../redux/phonebookOperation';
+import { deleteContact } from '../../redux/phonebook/phonebookOperation';
 
 export const ContactsList = () => {
   const contactsGallery = useSelector(getStoreContacts);
@@ -52,7 +52,7 @@ export const ContactsList = () => {
                 &#9742;
                 <NameCont>
                   <span>{cont.name}</span>
-                  <span>{cont.phone}</span>
+                  <span>{cont.number}</span>
                 </NameCont>
               </Contact>
               <BtnDelete type="submit" onClick={e => handleDelete(cont.id)}>

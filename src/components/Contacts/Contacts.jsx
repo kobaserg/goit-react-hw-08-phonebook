@@ -8,12 +8,12 @@ import {
   FormContact,
   BtnSubmit,
 } from './Contacts.styled';
-import { addContact } from '../../redux/phonebookOperation';
-import { getStoreContacts } from 'redux/phonebookSlice';
+import { addContact } from '../../redux/phonebook/phonebookOperation';
+import { getStoreContacts } from 'redux/phonebook/phonebookSlice';
 
 export function Contacts() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const contactsStore = useSelector(getStoreContacts);
 
@@ -24,8 +24,8 @@ export function Contacts() {
       case 'name':
         setName(event.target.value);
         break;
-      case 'phone':
-        setPhone(event.target.value);
+      case 'number':
+        setNumber(event.target.value);
         break;
       default:
         return;
@@ -38,7 +38,7 @@ export function Contacts() {
       .map(cont => cont.name.includes(name))
       .includes(true);
     if (!contactIs) {
-      dispatch(addContact({ name, phone }));
+      dispatch(addContact({ name, number }));
     } else {
       alert(`${name} is already in contacts`);
     }
@@ -48,7 +48,7 @@ export function Contacts() {
 
   const resetForm = () => {
     setName('');
-    setPhone('');
+    setNumber('');
   };
 
   return (
@@ -72,12 +72,12 @@ export function Contacts() {
             <Label>
               Number
               <Input
-                type="tel"
-                name="phone"
+                type="phone"
+                name="number"
                 pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                 title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
                 required
-                value={phone}
+                value={number}
                 onChange={handleChange}
               />
             </Label>
